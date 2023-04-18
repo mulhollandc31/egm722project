@@ -1,4 +1,4 @@
-name: egm722project
+name:egm722project
 channels:
   - conda-forge
   - defaults
