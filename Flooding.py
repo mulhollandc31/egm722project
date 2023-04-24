@@ -1,9 +1,10 @@
-import os
-import geopandas as gpd
-import matplotlib.pyplot as plt
-from cartopy.feature import ShapelyFeature
-import cartopy.crs as ccrs
-import matplotlib.patches as mpatches
-import matplotlib.lines as mlines
 
+import geopandas as gps
+import pandsa as pd
+import matplotlib.pyplot as plt
+
+fermanagh_poly = '\data\Fermanagh_DCA.shp'
+
+shape = gpd.read_file(fermanagh_poly)
+print(shape.head())
 
