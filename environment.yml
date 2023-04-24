@@ -4,9 +4,9 @@ channels:
   - defaults
 dependencies:
   - python
-  - geopandas
-  - cartopy>=0.21
+  - cartopy
   - notebook
   - rasterio
   - pyepsg
   - folium
+  geopandas
