@@ -11,3 +11,10 @@ dependencies:
   - pyepsg
   - folium
   - rasterstats
+  - pandas
+  - Shapely
+  - Fiona
+  - pyproj
+  - NumPy
+  - six
+  - ipython
