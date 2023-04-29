@@ -5,6 +5,8 @@ import geopandas as gpd
 import matplotlib.pyplot as plt
 from cartopy.feature import ShapelyFeature
 import cartopy.crs as ccrs
+import matplotlib.patches as mpatches
+import matplotlib.lines as mlines
 
 # Make the map plotting interactive
 plt.ion()
@@ -71,6 +73,28 @@ river_features = ShapelyFeature(rivers['geometry'],
                                 edgecolor='royalblue',
                                 facecolor='none',
                                 linewidth=1)
+
+# Generate loughs handle
+lough_handle = generate_handles(['Loughs'], ['mediumblue'])
+
+# Generate river handle
+river_handle = [mlines.Line2D([], [], color='royalblue')]
+
+# Generate road handle
+road_handle = [mlines.Line2D([], [], color='grey')]
+
+# Create the legend
+handles = lough_handle + river_handle + road_handle
+lables = ['Loughs', 'Main Rivers', 'Roads']
+
+leg = ax.legend(handles, lables, title='Legend', title_fontsize=12,
+                fontsize=10, loc='upper left', frameon=True, framealpha=1)
+
+gridlines = ax.gridlines(draw_labels=True,  # draw  labels for the grid lines
+                         xlocs=[-8, -7.5, -7, -6.5, -6, -5.5],  # add longitude lines at 0.5 deg intervals
+                         ylocs=[54, 54.5, 55, 55.5])  # add latitude lines at 0.5 deg intervals
+gridlines.left_labels = False  # turn off the left-side labels
+gridlines.bottom_labels = False  # turn off the bottom labels
 
 
 # add the features we've created to the map.
