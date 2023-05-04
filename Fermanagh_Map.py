@@ -96,7 +96,6 @@ gridlines = ax.gridlines(draw_labels=True,  # draw  labels for the grid lines
 gridlines.left_labels = False  # turn off the left-side labels
 gridlines.bottom_labels = False  # turn off the bottom labels
 
-
 # add the features we've created to the map.
 ax.add_feature(outline_feature)
 ax.add_feature(lough_features)

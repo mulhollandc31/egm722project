@@ -20,6 +20,8 @@ def generate_handles(labels, colors, edge='k', alpha=1):
     return handles
 
 # Creates a scale bar
+
+
 def scale_bar(ax, location=(0.92, 0.95)):
     x0, x1, y0, y1 = ax.get_extent()
     sbx = x0 + (x1 - x0) * location[0]
@@ -38,6 +40,11 @@ outline = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722p
 loughs = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/major_loughs.shp'))
 roads = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/Fermanagh roads.shp'))
 rivers = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/fer_main_river.shp'))
+floodOne = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/OneMFloodLLE.shp'))
+floodTwo = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/2mFloodLLE.shp'))
+floodThree = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/3mFloodLLE.shp'))
+floodFour = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/4mFloodLLE.shp'))
+floodFive = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/5mFloodLLE.shp'))
 
 # Creates a figure of size 10x10 inches
 myFig = plt.figure(figsize=(10, 10))
@@ -74,6 +81,18 @@ river_features = ShapelyFeature(rivers['geometry'],
                                 facecolor='none',
                                 linewidth=1)
 
+# Crate a 1m flood polygon layer
+floodOne_features = ShapelyFeature(floodOne['geometry'],
+                                   myCRS,
+                                   edgecolor='black',
+                                   facecolor='red')
+
+# Create a 2m flood polygon
+floodTwo_features = ShapelyFeature(floodTwo['geometry'],
+                                   myCRS,
+                                   edgecolor='yellow',
+                                   facecolor='yellow')
+
 # Generate loughs handle
 lough_handle = generate_handles(['Loughs'], ['mediumblue'])
 
@@ -98,10 +117,13 @@ gridlines.bottom_labels = False  # turn off the bottom labels
 
 
 # add the features we've created to the map.
+
 ax.add_feature(outline_feature)
 ax.add_feature(lough_features)
 ax.add_feature(road_features)
 ax.add_feature(river_features)
+ax.add_feature(floodOne_features)
+
 
 
 # using the boundary of the shapefile features, zoom the map to our area of interest
