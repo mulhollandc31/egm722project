@@ -37,13 +37,13 @@ def scale_bar(ax, location=(0.92, 0.95)):
 outline = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/Fermanagh_DCA.shp'))
 loughs = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/major_loughs.shp'))
 roads = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/Fermanagh roads.shp'))
-rivers = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/fer_main_river.shp'))
+rivers = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/fermanagh_main_river.shp'))
 
 # Creates a figure of size 10x10 inches
 myFig = plt.figure(figsize=(10, 10))
 
 # create a Universal Transverse Mercator reference system to transform the data.
-myCRS = ccrs.UTM(29)
+myCRS = ccrs.TransverseMercator(29903)
 
 # Creates an axes object, can project our data
 
