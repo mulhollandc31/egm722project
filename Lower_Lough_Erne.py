@@ -1,79 +1,100 @@
 
 
 import os.path
-
 import geopandas as gpd
 import matplotlib.pyplot as plt
 from cartopy.feature import ShapelyFeature
 import cartopy.crs as ccrs
 import matplotlib.patches as mpatches
+import folium
+import numpy as np
 
-# Makes the plotting interactive
-plt.ion()
 
-# Generate matplotlib handles, used to create a legend
-def generate_handles(labels, colors, edge='k', alpha=1):
-    lc = len(colors)
-    handles =[]
-    for i in range(len(labels)):
-        handles.append(mpatches.Rectangle((0, 0), 1, 1, facecolor=colors[i % lc], edgecolor=edge, alpha=alpha))
-    return handles
 
-# Creates a scale bar
+# Create the data frame
+dfOne = gpd.read_file(os.path.abspath('data_files/FloodOne.shp'))
+dfTwo = gpd.read_file(os.path.abspath('data_files/FloodTwo.shp'))
+dfThree = gpd.read_file(os.path.abspath('data_files/FloodThree.shp'))
+dfFour = gpd.read_file(os.path.abspath('data_files/FloodFour.shp'))
+dfFive = gpd.read_file(os.path.abspath('data_files/FloodFive.shp'))
+dfOne.head()
+dfTwo.head()
+dfThree.head()
+dfFour.head()
+dfFive.head()
 
-def scale_bar(ax, location=(0.92, 0.95)):
-    x0, x1, y0, y1 = ax.get_extent()
-    sbx = x0 + (x1 - x0) * location[0]
-    sby = y0 + (y1 - y0) * location[1]
+# Change epsg to 4326
+dfOne = dfOne.to_crs(epsg=4326)
+print(dfOne.crs)
+dfOne.head()
 
-    ax.plot([sbx, sbx - 20000], [sby, sby], color='k', linewidth=9, transform=ax.projection)
-    ax.plot([sbx, sbx - 10000], [sby, sby], color='k', linewidth=6, transform=ax.projection)
-    ax.plot([sbx-10000, sbx - 20000], [sby, sby], color='w', linewidth=6, transform=ax.projection)
+dfTwo = dfTwo.to_crs(epsg=4326)
+print(dfTwo.crs)
+dfTwo.head()
 
-    ax.text(sbx, sby-4500, '20 km', transform=ax.projection, fontsize=8)
-    ax.text(sbx-12500, sby-4500, '10 km', transform=ax.projection, fontsize=8)
-    ax.text(sbx-24500, sby-4500, '0 km', transform=ax.projection, fontsize=8)
+dfThree = dfThree.to_crs(epsg=4326)
+print(dfThree.crs)
+dfThree.head()
 
-# Load the dataset
-FloodOneLLE = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/FloodOne.shp'))
-FloodTwoLLE = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/FloodTwo.shp'))
-FloodThreeLLE = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/FloodThree.shp'))
-FloodFourLLE = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/FloodFour.shp'))
-FloodFiveLLE =gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/FloodFive.shp'))
-outline = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/Fermanagh_DCA.shp'))
+dfFour = dfFour.to_crs(epsg=4326)
+print(dfFour.crs)
+dfFour.head()
 
-# Creates a figure which is 10x10 inches
-myFig = plt.figure(figsize=(10, 10))
+dfFive = dfFive.to_crs(epsg=4326)
+print(dfFive.crs)
+dfFive.head()
 
-# Create a UTM reference system to transform the data
-myCRS = ccrs.TransverseMercator(29903)
+# Create a folium map
+m = folium.Map(location=[54.44, -7.73], tiles="Stamen Terrain", zoom_start=11, control_scale=True)
+m
 
-# Creates an axes object, can project data
+# Add polygons to the map
+for _, r in dfOne.iterrows(): # Simplify the representation of polygons
+    sim_geo = gpd.GeoSeries(r["geometry"]).simplify(tolerance=0.001)
+    geo_j = sim_geo.to_json()
+    geo_j = folium.GeoJson(data=geo_j, style_function=lambda x: {"fillColor": "orange"}, name='One meter flood')
+    geo_j.add_to(m)
+m
 
-ax =  plt.axes(projection=myCRS)
+for _, r in dfTwo.iterrows(): # Simplify the representation of polygons
+    sim_geo = gpd.GeoSeries(r["geometry"]).simplify(tolerance=0.001)
+    geo_j = sim_geo.to_json()
+    geo_j = folium.GeoJson(data=geo_j, style_function=lambda x: {"fillColor": "orange"}, name='Two meter flood')
+    geo_j.add_to(m)
+m
 
-# Add the 1m flood layer to the map
-FloodOneLLE_feature = ShapelyFeature(FloodOneLLE['geometry'], myCRS, edgecolor='k', facecolor='blue')
-xmin, ymin, xmax, ymax = FloodOneLLE.total_bounds
+for _, r in dfThree.iterrows(): # Simplify the representation of polygons
+    sim_geo = gpd.GeoSeries(r["geometry"]).simplify(tolerance=0.001)
+    geo_j = sim_geo.to_json()
+    geo_j = folium.GeoJson(data=geo_j, style_function=lambda x: {"fillColor": "orange"}, name= 'Three meter flood')
+    geo_j.add_to(m)
+m
 
-# Add the outline for Fermanagh
-outline_feature = ShapelyFeature(outline['geometry'],
-                                 myCRS,
-                                 edgecolor='black',
-                                 facecolor='none',
-                                 linewidth=1)
+for _, r in dfFour.iterrows(): # Simplify the representation of polygons
+    sim_geo = gpd.GeoSeries(r["geometry"]).simplify(tolerance=0.001)
+    geo_j = sim_geo.to_json()
+    geo_j = folium.GeoJson(data=geo_j, style_function=lambda x: {"fillColor": "orange"}, name='Four meter flood')
+    geo_j.add_to(m)
+m
 
-# Add features to the map
-ax.add_feature(FloodOneLLE_feature)
-ax.add_feature(outline_feature)
+for _, r in dfFive.iterrows(): # Simplify the representation of polygons
+    sim_geo = gpd.GeoSeries(r["geometry"]).simplify(tolerance=0.001)
+    geo_j = sim_geo.to_json()
+    geo_j = folium.GeoJson(data=geo_j, style_function=lambda x: {"fillColor": "orange"}, name='Five meter flood')
+    geo_j.add_to(m)
+m
+# https://geopandas.org/en/stable/gallery/polygon_plotting_with_folium.html
 
-# Using the boundary of the shapefile, zoom the map to the area of interest
-ax.set_extent([xmin-5000, xmax+5000, ymin-5000, ymax+5000], crs=myCRS)
+# Add Layer control
+folium.LayerControl().add_to(m)
+m
 
-scale_bar(ax)
 
-# Save my map
-myFig.savefig('Flood_Extent', bbox_inches='tight', dpi=300)
 
-print(outline.crs)
-print(FloodOneLLE.crs)
+# Converting shp to GeoJSON
+# shp_file = gpd.read_file('C:/Users/naloa/Documents/GitHub/egm722project/data_files/Fermanagh_DCA.shp')
+# shp_file.to_file('Fermanagh_DCA.geojson', driver='GeoJSON')
+
+
+# Save the interactive map
+m.save('Lower Lough Erne Flood Map.html')

@@ -34,10 +34,10 @@ def scale_bar(ax, location=(0.92, 0.95)):
     ax.text(sbx-24500, sby-4500, '0 km', transform=ax.projection, fontsize=8)
 
 # Loading datasets
-outline = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/Fermanagh_DCA.shp'))
-loughs = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/major_loughs.shp'))
-roads = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/Fermanagh roads.shp'))
-rivers = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/fermanagh_main_river.shp'))
+outline = gpd.read_file(os.path.abspath('data_files/Fermanagh_DCA.shp'))
+loughs = gpd.read_file(os.path.abspath('data_files/major_loughs.shp'))
+roads = gpd.read_file(os.path.abspath('data_files/Fermanagh roads.shp'))
+rivers = gpd.read_file(os.path.abspath('data_files/fermanagh_main_river.shp'))
 
 # Creates a figure of size 10x10 inches
 myFig = plt.figure(figsize=(10, 10))
