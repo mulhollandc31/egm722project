@@ -35,7 +35,11 @@ def scale_bar(ax, location=(0.92, 0.95)):
     ax.text(sbx-24500, sby-4500, '0 km', transform=ax.projection, fontsize=8)
 
 # Load the dataset
-FloodOneLLE = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/OnemFloodLLE.shp'))
+FloodOneLLE = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/FloodOne.shp'))
+FloodTwoLLE = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/FloodTwo.shp'))
+FloodThreeLLE = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/FloodThree.shp'))
+FloodFourLLE = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/FloodFour.shp'))
+FloodFiveLLE =gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/FloodFive.shp'))
 outline = gpd.read_file(os.path.abspath('C:/Users/naloa/Documents/GitHub/egm722project/data_files/Fermanagh_DCA.shp'))
 
 # Creates a figure which is 10x10 inches
@@ -56,7 +60,7 @@ xmin, ymin, xmax, ymax = FloodOneLLE.total_bounds
 outline_feature = ShapelyFeature(outline['geometry'],
                                  myCRS,
                                  edgecolor='black',
-                                 facecolor='black',
+                                 facecolor='none',
                                  linewidth=1)
 
 # Add features to the map
