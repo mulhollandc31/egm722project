@@ -53,7 +53,7 @@ for _, r in dfOne.iterrows(): # Simplify the representation of polygons
     sim_geo = gpd.GeoSeries(r["geometry"])#.simplify(tolerance=0.001)
     geo_j = sim_geo.to_json()
     geo_j = folium.GeoJson(data=geo_j, style_function=lambda
-        x: {"fillColor": "orange"}, name='One meter flood', show=True)
+        x: {"fillColor": "red"}, name='One meter flood', show=True)
     geo_j.add_to(m)
 m
 
@@ -61,7 +61,7 @@ for _, r in dfTwo.iterrows(): # Simplify the representation of polygons
     sim_geo = gpd.GeoSeries(r["geometry"])#.simplify(tolerance=0.001)
     geo_j = sim_geo.to_json()
     geo_j = folium.GeoJson(data=geo_j, style_function=lambda
-        x: {"fillColor": "orange"}, name='Two meter flood', show=False)
+        x: {"fillColor": "red"}, name='Two meter flood', show=False)
     geo_j.add_to(m)
 m
 
@@ -69,7 +69,7 @@ for _, r in dfThree.iterrows(): # Simplify the representation of polygons
     sim_geo = gpd.GeoSeries(r["geometry"])#.simplify(tolerance=0.001)
     geo_j = sim_geo.to_json()
     geo_j = folium.GeoJson(data=geo_j, style_function=lambda
-        x: {"fillColor": "orange"}, name= 'Three meter flood', show=False)
+        x: {"fillColor": "red"}, name= 'Three meter flood', show=False)
     geo_j.add_to(m)
 m
 
@@ -77,7 +77,7 @@ for _, r in dfFour.iterrows(): # Simplify the representation of polygons
     sim_geo = gpd.GeoSeries(r["geometry"])#.simplify(tolerance=0.001)
     geo_j = sim_geo.to_json()
     geo_j = folium.GeoJson(data=geo_j, style_function=lambda
-        x: {"fillColor": "orange"}, name='Four meter flood', show=False)
+        x: {"fillColor": "red"}, name='Four meter flood', show=False)
     geo_j.add_to(m)
 m
 
@@ -85,7 +85,7 @@ for _, r in dfFive.iterrows(): # Simplify the representation of polygons
     sim_geo = gpd.GeoSeries(r["geometry"])#.simplify(tolerance=0.001)
     geo_j = sim_geo.to_json()
     geo_j = folium.GeoJson(data=geo_j, style_function=lambda
-        x: {"fillColor": "orange"}, name='Five meter flood', show=False)
+        x: {"fillColor": "red"}, name='Five meter flood', show=False)
     geo_j.add_to(m)
 m
 # https://geopandas.org/en/stable/gallery/polygon_plotting_with_folium.html
