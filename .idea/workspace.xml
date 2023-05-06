@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfc4737c-8b97-4c10-8994-3d69461a5d73" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Fermanagh_DCA.geojson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lower Lough Erne Flood Map.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fermanagh_Map.py" beforeDir="false" afterPath="$PROJECT_DIR$/Fermanagh_Map.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lower_Lough_Erne.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lower_Lough_Erne.py" afterDir="false" />
-    </list>
+    <list default="true" id="cfc4737c-8b97-4c10-8994-3d69461a5d73" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
