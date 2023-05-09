@@ -11,4 +11,6 @@ FloodThree = gpd.read_file(os.path.abspath('data_files/FloodThree.shp'))
 FloodFour = gpd.read_file(os.path.abspath('data_files/FloodFour.shp'))
 FloodFive = gpd.read_file(os.path.abspath('data_files/FloodFive.shp'))
 
-print(roads.head())
+gpd.sjoin(roads, loughs)
+
+roads.within(loughs)
