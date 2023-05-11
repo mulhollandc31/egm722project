@@ -55,7 +55,9 @@ data = data[populated_columns]
 data.to_csv('outputs/FloodOne.csv', index=False)
 
 print(FloodOneFinal)
-
+LengthOne = 'Length_left'
+FloodOneLength = FloodOneFinal[LengthOne].sum()
+print('Total length of roads flooded by the lough rising by 1m is {} meters'.format(FloodOneLength))
 
 
 
