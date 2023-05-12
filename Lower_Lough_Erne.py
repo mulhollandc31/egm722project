@@ -1,15 +1,6 @@
-
-
 import os.path
 import geopandas as gpd
-import matplotlib.pyplot as plt
-from cartopy.feature import ShapelyFeature
-import cartopy.crs as ccrs
-import matplotlib.patches as mpatches
 import folium
-import numpy as np
-
-
 
 # Create the data frame
 dfOne = gpd.read_file(os.path.abspath('data_files/FloodOne.shp'))
@@ -93,13 +84,6 @@ m
 # Add Layer control
 folium.LayerControl(collapsed=False).add_to(m)
 m
-
-
-
-# Converting shp to GeoJSON
-# shp_file = gpd.read_file('C:/Users/naloa/Documents/GitHub/egm722project/data_files/Fermanagh_DCA.shp')
-# shp_file.to_file('Fermanagh_DCA.geojson', driver='GeoJSON')
-
 
 # Save the interactive map
 m.save('Lower Lough Erne Flood Map.html')

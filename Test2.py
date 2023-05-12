@@ -34,30 +34,35 @@ FloodThreeRoads = FloodThreeRoads.rename(columns={'OBJECTID': 'Key'}),
 FloodFourRoads = FloodFourRoads.rename(columns={'OBJECTID': 'Key'}),
 FloodFiveRoads = FloodFiveRoads.rename(columns={'OBJECTID': 'Key'})
 
-# Spatial Difference Operation
-spatial_join = gpd.sjoin(FloodOneRoads, bridges, how='left', predicate='intersects')
-FloodOneFinal = spatial_join[spatial_join.index_right.isna()]
-FloodOneFinal.to_csv('outputs/FloodOne.csv')
+# List of input shapefiles
+FloodInputs = [FloodOneRoads, FloodTwoRoads, FloodThreeRoads, FloodFourRoads, FloodFiveRoads]
 
-# Read the CSV file into a DataFrame
-data = pd.read_csv('outputs/FloodOne.csv')
+# Loop the shapefile paths
+for i, FloodInputs in enumerate(FloodInputs, start=1):
 
-# Find the empty columns
-empty_columns = data.columns[data.isnull().all()]
+    # Spatial Difference Operation
+    spatial_join = gpd.sjoin(FloodOneRoads, bridges, how='left', predicate='intersects')
+    FloodOneFinal = spatial_join[spatial_join.index_right.isna()]
+    FloodOneFinal.to_csv('outputs/Flood_{i}.csv')
 
-# Find the populated columns
-populated_columns = data.columns[data.notnull().any()]
+    # Read the CSV file into a DataFrame
+    data = pd.read_csv('outputs/FloodOne.csv')
 
-# Filter the DataFrame to keep only the populated columns
-data = data[populated_columns]
+    # Find the empty columns
+    empty_columns = data.columns[data.isnull().all()]
 
-# Save the modified DataFrame to a new CSV file
-data.to_csv('outputs/FloodOne.csv', index=False)
+    # Find the populated columns
+    populated_columns = data.columns[data.notnull().any()]
 
-print(FloodOneFinal)
-LengthOne = 'Length_left'
-FloodOneLength = FloodOneFinal[LengthOne].sum()
-print('Total length of roads flooded by the lough rising by 1m is {} meters'.format(FloodOneLength))
+    # Filter the DataFrame to keep only the populated columns
+    data = data[populated_columns]
+
+    # Save the modified DataFrame to a new CSV file
+    data.to_csv('outputs/FloodOne.csv', index=False)
+
+    LengthOne = 'Length_left'
+    FloodOneLength = FloodOneFinal[LengthOne].sum()
+    print('Total length of roads flooded by the lough rising by 1m is {} meters'.format(FloodOneLength))
 
 
 

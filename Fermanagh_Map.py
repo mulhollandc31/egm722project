@@ -1,7 +1,5 @@
 import os.path
-
 import geopandas as gpd
-import pandas as pd
 import matplotlib.pyplot as plt
 from cartopy.feature import ShapelyFeature
 import cartopy.crs as ccrs
@@ -96,21 +94,16 @@ gridlines = ax.gridlines(draw_labels=True,  # draw  labels for the grid lines
 gridlines.left_labels = False  # turn off the left-side labels
 gridlines.bottom_labels = False  # turn off the bottom labels
 
-
 # add the features we've created to the map.
 ax.add_feature(outline_feature)
 ax.add_feature(lough_features)
 ax.add_feature(road_features)
 ax.add_feature(river_features)
 
-
 # using the boundary of the shapefile features, zoom the map to our area of interest
 ax.set_extent([xmin-5000, xmax+5000, ymin-5000, ymax+5000], crs=myCRS)  # because total_bounds
 
 scale_bar(ax)
 
-
 # Save the map
 myFig.savefig('map.png', bbox_inches='tight', dpi=300)
-
-
