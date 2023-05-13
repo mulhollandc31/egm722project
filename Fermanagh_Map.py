@@ -5,6 +5,7 @@ from cartopy.feature import ShapelyFeature
 import cartopy.crs as ccrs
 import matplotlib.patches as mpatches
 import matplotlib.lines as mlines
+import pandas as pd
 
 # Make the map plotting interactive
 plt.ion()
@@ -36,6 +37,7 @@ outline = gpd.read_file(os.path.abspath('data_files/Fermanagh_DCA.shp'))
 loughs = gpd.read_file(os.path.abspath('data_files/major_loughs.shp'))
 roads = gpd.read_file(os.path.abspath('data_files/Fermanagh roads.shp'))
 rivers = gpd.read_file(os.path.abspath('data_files/fermanagh_main_river.shp'))
+towns = gpd.read_file(os.path.abspath('data_files/Fermanagh_towns.shp'))
 
 # Creates a figure of size 10x10 inches
 myFig = plt.figure(figsize=(10, 10))
@@ -72,6 +74,15 @@ river_features = ShapelyFeature(rivers['geometry'],
                                 facecolor='none',
                                 linewidth=1)
 
+# Create a point on the map for each of the towns
+town_handle = ax.plot(towns.geometry.x, towns.geometry.y, 'o', color='red',
+                      ms=5, transform=myCRS)
+
+for i, town in towns.iterrows():
+    ax.text(town.geometry.x +800 , town.geometry.y, town['Name'], color='black',
+            fontsize=8, ha='left', va='bottom', transform=myCRS,
+    bbox = dict(facecolor='white', edgecolor='black', boxstyle='round,pad=0.2'))
+
 # Generate loughs handle
 lough_handle = generate_handles(['Loughs'], ['mediumblue'])
 
@@ -82,8 +93,8 @@ river_handle = [mlines.Line2D([], [], color='royalblue')]
 road_handle = [mlines.Line2D([], [], color='grey')]
 
 # Create the legend
-handles = lough_handle + river_handle + road_handle
-lables = ['Loughs', 'Main Rivers', 'Roads']
+handles = lough_handle + river_handle + road_handle + town_handle
+lables = ['Loughs', 'Main Rivers', 'Roads', 'Towns']
 
 leg = ax.legend(handles, lables, title='Legend', title_fontsize=12,
                 fontsize=10, loc='upper left', frameon=True, framealpha=1)

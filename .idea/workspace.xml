@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfc4737c-8b97-4c10-8994-3d69461a5d73" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_files/Fermanagh_towns.cpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_files/Fermanagh_towns.csv.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_files/Fermanagh_towns.dbf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_files/Fermanagh_towns.prj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_files/Fermanagh_towns.sbn" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_files/Fermanagh_towns.sbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_files/Fermanagh_towns.shp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_files/Fermanagh_towns.shp.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_files/Fermanagh_towns.shx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Fermanagh_Map.py" beforeDir="false" afterPath="$PROJECT_DIR$/Fermanagh_Map.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/outputs/StudyAreaMap.png" beforeDir="false" afterPath="$PROJECT_DIR$/outputs/StudyAreaMap.png" afterDir="false" />
