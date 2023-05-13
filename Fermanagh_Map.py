@@ -5,6 +5,7 @@ from cartopy.feature import ShapelyFeature
 import cartopy.crs as ccrs
 import matplotlib.patches as mpatches
 import matplotlib.lines as mlines
+import cartopy.mpl.ticker as cticker
 
 # Make the map plotting interactive
 plt.ion()
@@ -93,6 +94,14 @@ gridlines = ax.gridlines(draw_labels=True,  # draw  labels for the grid lines
                          ylocs=[54, 54.5, 55, 55.5])  # add latitude lines at 0.5 deg intervals
 gridlines.left_labels = False  # turn off the left-side labels
 gridlines.bottom_labels = False  # turn off the bottom labels
+
+# Add a north arrow
+ax.annotate('N', xy=(0.05, 0.01), xycoords='axes fraction', ha='center',
+            va='center', fontsize=16, color='black',
+            xytext=(0, 10), textcoords='offset points')
+
+ax.arrow(0.05, 0.05, 0, 0.05, transform=ax.transAxes, color='black',
+         linewidth=1, head_width=0.03, head_length=0.04, overhang=0.5)
 
 # add the features we've created to the map.
 ax.add_feature(outline_feature)
