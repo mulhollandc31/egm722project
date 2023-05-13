@@ -84,20 +84,25 @@ CountFive = FloodFiveFinal['CLASS_left']
 FloodOneLength = LengthOne.sum()/1000
 print('Total length of roads flooded by the lough rising by 1m is {} kilometers'.format(FloodOneLength))
 FloodOneCount = CountOne.value_counts()
+print('A count of all the class of roads affected by the floods')
 print(FloodOneCount)
 FloodTwoLength = LengthTwo.sum()/1000
 print('Total length of roads flooded by the lough rising by 2m is {} kilometers'.format(FloodTwoLength))
 FloodTwoCount = CountTwo.value_counts()
+print('A count of all the class of roads affected by the floods')
 print(FloodTwoCount)
 FloodThreeLength = LengthThree.sum()/1000
 print('Total length of roads flooded by the lough rising by 3m is {} kilometers'.format(FloodThreeLength))
 FloodThreeCount = CountThree.value_counts()
+print('A count of all the class of roads affected by the floods')
 print(FloodThreeCount)
 FloodFourLength = LengthFour.sum()/1000
 print('Total length of roads flooded by the lough rising by 4m is {} kilometers'.format(FloodFourLength))
 FloodFourCount = CountFour.value_counts()
+print('A count of all the class of roads affected by the floods')
 print(FloodFourCount)
 FloodFiveLength = LengthFive.sum()/1000
 print('Total length of roads flooded by the lough rising by 5m is {} kilometers'.format(FloodFiveLength))
 FloodFiveCount = CountFive.value_counts()
+print('A count of all the class of roads affected by the floods')
 print(FloodFiveCount)

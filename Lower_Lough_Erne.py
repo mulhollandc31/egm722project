@@ -1,4 +1,6 @@
 import os.path
+import webbrowser
+
 import geopandas as gpd
 import folium
 
@@ -86,4 +88,4 @@ folium.LayerControl(collapsed=False).add_to(m)
 m
 
 # Save the interactive map
-m.save('Lower Lough Erne Flood Map.html')
+m.save('outputs/LowerLoughErneFloodMap.html')

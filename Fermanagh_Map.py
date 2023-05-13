@@ -106,4 +106,5 @@ ax.set_extent([xmin-5000, xmax+5000, ymin-5000, ymax+5000], crs=myCRS)  # becaus
 scale_bar(ax)
 
 # Save the map
-myFig.savefig('map.png', bbox_inches='tight', dpi=300)
+myFig.savefig('outputs/StudyAreaMap.png', bbox_inches='tight', dpi=600)
+
