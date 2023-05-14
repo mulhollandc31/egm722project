@@ -1,8 +1,15 @@
+"""
+
+An interactive map which open in a web browser, the user can move about the map as well as change the zoom distance.
+The five flood levels can be toggled on/off to visually identify which roads are affected.
+
+"""
+
 import os.path
 import geopandas as gpd
 import folium
 
-# Create the data frame
+# Create the data frame. The data is loaded from the data_files folder
 dfOne = gpd.read_file(os.path.abspath('data_files/FloodOne.shp'))
 dfTwo = gpd.read_file(os.path.abspath('data_files/FloodTwo.shp'))
 dfThree = gpd.read_file(os.path.abspath('data_files/FloodThree.shp'))
@@ -79,6 +86,7 @@ for _, r in dfFive.iterrows(): # Simplify the representation    of polygons
         x: {"fillColor": "red"}, name='Five meter flood', show=False)
     geo_j.add_to(m)
 m
+# The source for the code to add polygons
 # https://geopandas.org/en/stable/gallery/polygon_plotting_with_folium.html
 
 # Add Layer control

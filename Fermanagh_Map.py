@@ -1,3 +1,9 @@
+"""
+A static map of the study area County Fermanagh is created, this map displays Lough Erne,
+major river and all roads.
+
+"""
+
 import os.path
 import geopandas as gpd
 import matplotlib.pyplot as plt

@@ -1,3 +1,10 @@
+"""
+This file will out put a CSV file for each of the flood levels, the CSV file will contain data for all the roads which
+are flooded. In the Python console the total length of road flooded for each flood level as well as a count of the
+different class of roads flooded will be output.
+
+"""
+
 import os.path
 import geopandas as gpd
 import pandas as pd
