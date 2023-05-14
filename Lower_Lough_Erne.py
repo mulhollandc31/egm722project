@@ -1,6 +1,4 @@
 import os.path
-import webbrowser
-
 import geopandas as gpd
 import folium
 

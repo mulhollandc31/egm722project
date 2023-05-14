@@ -5,7 +5,7 @@ from cartopy.feature import ShapelyFeature
 import cartopy.crs as ccrs
 import matplotlib.patches as mpatches
 import matplotlib.lines as mlines
-import pandas as pd
+
 
 # Make the map plotting interactive
 plt.ion()
